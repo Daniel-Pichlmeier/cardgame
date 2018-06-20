@@ -23,31 +23,74 @@ const button = {
     borderRadius: 2
 };
 
+const danger = {
+    background: "#6f5f23"
+};
+
 export class CardDefault extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             tries: 0,
-            inputValue: null
+            inputValue: "",
+            danger: false
         };
-        this.handleChange = this.handleChange.bind(this);
     }
 
-    handleChange(e) {
+    handleChange = (e) => {
         const result = e.target.value;
-        if (result.toLowerCase() === this.props.name.toLowerCase()) {
+        this.setState({
+            inputValue: result,
+        });
+    };
+
+    submitAResult = () => {
+        const currentInput = this.state.inputValue;
+        const solution = this.props.name;
+        //it is solved
+        if (currentInput.toLowerCase() === solution.toLowerCase() && this.state.tries < 3) {
             this.props.submitResult(true);
+        //count tries
+        } else if (currentInput.toLowerCase() !== solution.toLowerCase() && this.state.tries < 3) {
+            if (this.state.tries === 1) {
+                this.setState({
+                    danger: true,
+                });
+            }
+            let currentTries = this.state.tries;
+            currentTries++;
+            this.setState({
+                tries: currentTries,
+                inputValue: ""
+            });
+            if (currentTries >= 3) {
+                this.props.submitResult(false);
+            }
+        //failed
         }
-    }
+    };
+
+    triesLeft = () => {
+        return 3 - this.state.tries;
+    };
+
+    showStatus = () => {
+        if (this.state.danger === false) {
+            return {};
+        } else {
+            return danger;
+        }
+    };
 
     render() {
         return (
-            <div className={this.props.classToggle}>
+            <div className={this.props.classToggle} style={this.showStatus()}>
                 <h2>Who could it be?</h2>
                 <div style={textStyle}>
                     <span>Make a guess:</span>
-                    <input onChange={this.handleChange} style={inputStyle}/>
-                    <button style={button}/>
+                    <input type="text" value={this.state.inputValue} onChange={this.handleChange} style={inputStyle}/>
+                    <button style={button} onClick={this.submitAResult}/>
+                    <div>{this.triesLeft()}</div>
                 </div>
                 <img src={this.props.src} alt="image"/>
             </div>);

@@ -10,7 +10,9 @@ export class CardContainer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isActive: true, //card: default or show
+            isActive: true,
+            answered: null,
+            failed: false
         };
         this.toggleCard = this.toggleCard.bind(this);
         this.checkResult = this.checkResult.bind(this);
@@ -20,8 +22,6 @@ export class CardContainer extends React.Component {
         let newState = !this.state.isActive;
         this.setState({
             isActive: newState,
-            answered: false,
-            failed: false
         });
     }
 
@@ -34,6 +34,12 @@ export class CardContainer extends React.Component {
             console.log("getting here!");
             this.setState({
                 answered: true,
+                failed: false
+            });
+        } else {
+            this.setState({
+                answered: true,
+                failed: true
             });
         }
     }
@@ -49,7 +55,7 @@ export class CardContainer extends React.Component {
                     state={this.state.isActive}
                 />
                 <CardShown
-                    answered={this.state.answered}
+                    failed={this.state.failed}
                     classToggle={this.state.answered ? "card card_shown" : "card card_hidden"}
                     src={this.getPath()}
                     state={this.state.isActive}
