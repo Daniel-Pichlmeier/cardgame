@@ -1,0 +1,46 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.card_list > div {
+  padding: 8px;
+  margin: 16px;
+  text-align: center;
+}
+
+.info_panel {
+  display: flex;
+  flex-flow: column;
+}
+
+.card_hidden {
+  display: none;
+}
+
+.card_shown {
+  display: block;
+}
+
+.card {
+  box-shadow: 1px 1px 8px #d2d2d2;
+  padding: 16px;
+  flex-basis: 300px;
+  max-width: 300px;
+  overflow: hidden;
+  max-height: 300px;
+  min-width: 300px;
+  min-height: 300px;
+  color: #4a0000;
+}
+
+.card_list {
+  display:  flex;
+  flex-flow:  row wrap;
+}
+
+.card img {
+  width: auto;
+  max-height: 280px;
+}
