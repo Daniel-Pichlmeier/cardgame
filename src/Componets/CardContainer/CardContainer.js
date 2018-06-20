@@ -2,6 +2,10 @@ import React from 'react';
 import {CardDefault} from "../CardDefault/CardDefault";
 import {CardShown} from "../CardShown/CardShown";
 
+const style = {
+    fontWeight: "normal"
+};
+
 export class CardContainer extends React.Component {
     constructor(props) {
         super(props);
@@ -9,12 +13,15 @@ export class CardContainer extends React.Component {
             isActive: true, //card: default or show
         };
         this.toggleCard = this.toggleCard.bind(this);
+        this.checkResult = this.checkResult.bind(this);
     }
 
     toggleCard() {
         let newState = !this.state.isActive;
         this.setState({
-            isActive: newState
+            isActive: newState,
+            answered: false,
+            failed: false
         });
     }
 
@@ -22,24 +29,28 @@ export class CardContainer extends React.Component {
         return (`http://localhost/media/${this.props.image}`).toString();
     }
 
-    toggleVisibilityCardDefault() {
-        let className;
-        this.state.isActive ?  className = "card card_shown" : className = "card card_hidden";
-        return className;
-    }
-
-    toggleVisibilityCardShown() {
-        let className;
-        this.state.isActive ? className = "card card_hidden" : className = "card card_shown";
-        return className;
+    checkResult(guessed) {
+        if (guessed) {
+            console.log("getting here!");
+            this.setState({
+                answered: true,
+            });
+        }
     }
 
     render() {
         return (
-            <div onClick={this.toggleCard}>
-                <CardDefault classToggle={this.toggleVisibilityCardDefault()} src={this.getPath()} state={this.state.isActive}/>
+            <div style={style}>
+                <CardDefault
+                    classToggle={this.state.answered ? "card card_hidden" : "card card_shown"}
+                    submitResult={this.checkResult}
+                    name={this.props.name}
+                    src={this.getPath()}
+                    state={this.state.isActive}
+                />
                 <CardShown
-                    classToggle={this.toggleVisibilityCardShown()}
+                    answered={this.state.answered}
+                    classToggle={this.state.answered ? "card card_shown" : "card card_hidden"}
                     src={this.getPath()}
                     state={this.state.isActive}
                     name={this.props.name}
