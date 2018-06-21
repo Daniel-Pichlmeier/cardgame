@@ -4,6 +4,16 @@ body {
   font-family: sans-serif;
 }
 
+.status_bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background: white;
+  padding: 8px;
+  width: 100%;
+  box-shadow: 0 -1px 4px rgba(37, 37, 37, 0.12);
+}
+
 .card_list > div {
   padding: 8px;
   margin: 16px;
@@ -25,15 +35,13 @@ body {
 }
 
 .card {
-  box-shadow: 1px 1px 8px #d2d2d2;
-  padding: 16px;
-  flex-basis: 300px;
-  max-width: 300px;
-  overflow: hidden;
-  max-height: 300px;
-  min-width: 300px;
-  min-height: 300px;
-  color: #4a0000;
+    -webkit-box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.12);
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.12);
+    padding: 16px;
+    overflow: hidden;
+    max-height: 300px;
+    min-height: 300px;
+    color: #4a0000;
 }
 
 .card_list {
