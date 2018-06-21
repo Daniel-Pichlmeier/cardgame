@@ -47,6 +47,10 @@ export class CardDefault extends React.Component {
     submitAResult = () => {
         const currentInput = this.state.inputValue;
         const solution = this.props.name;
+        // catch and abort on empty clicks
+        if (currentInput === "") {
+            return false;
+        }
         //it is solved
         if (currentInput.toLowerCase() === solution.toLowerCase() && this.state.tries < 3) {
             this.props.submitResult(true);
@@ -85,9 +89,8 @@ export class CardDefault extends React.Component {
     render() {
         return (
             <div className={this.props.classToggle} style={this.showStatus()}>
-                <h2>Who could it be?</h2>
                 <div style={textStyle}>
-                    <span>Make a guess:</span>
+                    <span>{this.props.name}</span>
                     <input type="text" value={this.state.inputValue} onChange={this.handleChange} style={inputStyle}/>
                     <button style={button} onClick={this.submitAResult}/>
                     <div>{this.triesLeft()}</div>

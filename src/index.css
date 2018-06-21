@@ -19,8 +19,9 @@ body {
   display: none;
 }
 
-.card_shown {
-  display: block;
+.card.card_shown {
+  display: flex;
+  flex-flow: column nowrap;
 }
 
 .card {
@@ -41,6 +42,5 @@ body {
 }
 
 .card img {
-  width: auto;
-  max-height: 200px;
+  width: 100%;
 }

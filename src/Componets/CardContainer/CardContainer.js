@@ -25,9 +25,6 @@ export class CardContainer extends React.Component {
         });
     }
 
-    getPath() {
-        return (`http://localhost/media/${this.props.image}`).toString();
-    }
 
     checkResult(guessed) {
         if (guessed) {
@@ -51,13 +48,13 @@ export class CardContainer extends React.Component {
                     classToggle={this.state.answered ? "card card_hidden" : "card card_shown"}
                     submitResult={this.checkResult}
                     name={this.props.name}
-                    src={this.getPath()}
+                    src={this.props.image}
                     state={this.state.isActive}
                 />
                 <CardShown
                     failed={this.state.failed}
                     classToggle={this.state.answered ? "card card_shown" : "card card_hidden"}
-                    src={this.getPath()}
+                    src={this.props.image}
                     state={this.state.isActive}
                     name={this.props.name}
                     likes={this.props.likes}

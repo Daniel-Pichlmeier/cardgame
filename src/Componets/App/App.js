@@ -7,11 +7,11 @@ import {CardsContainer} from "../CardsContainer/CardsContainer";
 class App extends Component {
     constructor(props) {
         super(props);
-        fetch("http://localhost/data/data.json")
+        /*fetch("http://localhost/data/data.json")
             .then(response => response.json())
             .then(result => {
-
             })
+            */
     }
 
 
