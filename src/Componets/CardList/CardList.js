@@ -45,9 +45,9 @@ export class CardList extends React.Component {
             return <div className="api_loader">Lade Daten...</div>;
         } else {
             return (
-                <ul style={{display:"flex", flexFlow:"row wrap", justifyContent:"space-evenly"}}>
+                <ul>
                     {data.map(data => (
-                        <li key={data.login.uuid} style={{display:"block", listStyle:"none", marginBottom: 40}}>
+                        <li key={data.login.uuid}>
                             <CardContainer
                             name={data.name.last}
                             image={data.picture.large}
