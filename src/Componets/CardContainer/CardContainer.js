@@ -27,18 +27,10 @@ export class CardContainer extends React.Component {
 
 
     checkResult(guessed) {
-        if (guessed) {
-            console.log("getting here!");
-            this.setState({
-                answered: true,
-                failed: false
-            });
-        } else {
-            this.setState({
-                answered: true,
-                failed: true
-            });
-        }
+        this.setState({
+            answered: true,
+            failed: !guessed
+        })
     }
 
     render() {
@@ -46,21 +38,18 @@ export class CardContainer extends React.Component {
             <div style={style}>
                 <CardDefault
                     classToggle={this.state.answered ? "card card_hidden" : "card card_shown"}
-                    submitResult={this.checkResult}
-                    name={this.props.name}
-                    src={this.props.image}
-                    state={this.state.isActive}
+                    answer={this.props.solution}
+                    data = {this.props.data}
+                    toggleThis = {this.toggleCard}
                 />
                 <CardShown
                     failed={this.state.failed}
                     classToggle={this.state.answered ? "card card_shown" : "card card_hidden"}
-                    src={this.props.image}
-                    state={this.state.isActive}
-                    name={this.props.name}
-                    likes={this.props.likes}
-                    worksIn={this.props.worksIn}
+                    answer={this.props.solution}
+                    data = {this.props.data}
+                    solve = {this.checkResult}
                 />
             </div>
-        );
+        )
     }
 }

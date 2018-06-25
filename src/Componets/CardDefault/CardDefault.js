@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 const textStyle = {
     display: "flex",
@@ -29,7 +29,7 @@ const danger = {
 
 export class CardDefault extends React.Component {
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
             tries: 0,
             inputValue: "",
@@ -37,23 +37,23 @@ export class CardDefault extends React.Component {
         };
     }
 
-    handleChange = (e) => {
-        const result = e.target.value;
+    handleClick = (e) => {
+        const result = e.target.value
         this.setState({
             inputValue: result,
         });
     };
 
     submitAResult = () => {
-        const currentInput = this.state.inputValue;
-        const solution = this.props.name;
+        const currentInput = this.state.inputValue
+        const solution = this.props.name
         // catch and abort on empty clicks
         if (currentInput === "") {
-            return false;
+            return false
         }
         //it is solved
         if (currentInput.toLowerCase() === solution.toLowerCase() && this.state.tries < 3) {
-            this.props.submitResult(true);
+            this.props.submitResult(true)
         //count tries
         } else if (currentInput.toLowerCase() !== solution.toLowerCase() && this.state.tries < 3) {
             if (this.state.tries === 1) {
@@ -61,14 +61,14 @@ export class CardDefault extends React.Component {
                     danger: true,
                 });
             }
-            let currentTries = this.state.tries;
+            let currentTries = this.state.tries
             currentTries++;
             this.setState({
                 tries: currentTries,
                 inputValue: ""
             });
             if (currentTries >= 3) {
-                this.props.submitResult(false);
+                this.props.submitResult(false)
             }
         //failed
         }
@@ -80,22 +80,24 @@ export class CardDefault extends React.Component {
 
     showStatus = () => {
         if (this.state.danger === false) {
-            return {};
+            return {}
         } else {
-            return danger;
+            return danger
         }
-    };
+    }
+
+    getPicture() {
+        return "url(" + this.props.data[this.props.answer].picture.large + ")"
+    }
 
     render() {
         return (
-            <div className={this.props.classToggle} style={this.showStatus()}>
-                <div style={textStyle}>
-                    <span>{this.props.name}</span>
-                    <input type="text" value={this.state.inputValue} onChange={this.handleChange} style={inputStyle}/>
-                    <button style={button} onClick={this.submitAResult}/>
-                    <div>{this.triesLeft()}</div>
-                </div>
-                <img src={this.props.src} alt="image"/>
+            <div className={this.props.classToggle} style={{backgroundImage: this.getPicture()}}>
+                <ul onClick={this.handleClick}>
+                    <li data-number="1">{this.props.data[0].name.title} {this.props.data[0].name.first} {this.props.data[0].name.last}</li>
+                    <li data-number="2">{this.props.data[1].name.title} {this.props.data[1].name.first} {this.props.data[1].name.last}</li>
+                    <li data-number="3">{this.props.data[2].name.title} {this.props.data[2].name.first} {this.props.data[2].name.last}</li>
+                </ul>
             </div>);
     }
 }
