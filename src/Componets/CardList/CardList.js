@@ -39,6 +39,10 @@ export class CardList extends React.Component {
         this.getDataFromApi()
     }
 
+    propagateAppState = (answeredCorrectly) => {
+        this.props.countAnswered(answeredCorrectly);
+    };
+
     render(){
         const { error, isLoaded } = this.state;
         if (error) {
@@ -50,6 +54,7 @@ export class CardList extends React.Component {
                 <CardContainer
                     data={this.state.data}
                     solution={this.state.target}
+                    propagateAppState={this.propagateAppState}
                 />
             )
         }

@@ -38,6 +38,11 @@ export class CardContainer extends React.Component {
         })
     };
 
+    propagateToCardList = (answeredCorrectly) => {
+        console.log("@CardContainer ", answeredCorrectly);
+        this.props.propagateAppState(answeredCorrectly)
+    };
+
     render() {
         return (
             <div style={style}>
@@ -54,6 +59,7 @@ export class CardContainer extends React.Component {
                     classToggle={this.state.answered ? "card card_shown" : "card card_hidden"}
                     answer={this.props.solution}
                     data = {this.props.data}
+                    propagateToCardContainer={this.propagateToCardList}
                 />
             </div>
         )

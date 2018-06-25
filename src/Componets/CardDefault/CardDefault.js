@@ -16,7 +16,6 @@ export class CardDefault extends React.Component {
         } else {
             return false
         }
-        console.log("Result @ handleclick: ", result);
         this.props.onClick(result, resultText)
     };
 
