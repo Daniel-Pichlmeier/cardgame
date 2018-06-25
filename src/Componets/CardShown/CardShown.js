@@ -11,21 +11,22 @@ const lose = {
 export class CardShown extends React.Component {
 
     evalResult() {
-        if (this.props.failed) {
-            return lose;
-        } else {
+        if (this.props.solved) {
             return win;
+        } else {
+            return lose;
         }
+    }
+
+    getPicture() {
+        return "url(" + this.props.data[this.props.answer].picture.large + ")"
     }
 
     render() {
         return (
-            <div className={this.props.classToggle} style={this.evalResult()}>
-                <img alt={this.props.name} src={this.props.src} />
-                <div className="info_panel">
-                    <span>Name: {this.props.name}</span>
-                    <span>Likes most: {this.props.likes}</span>
-                    <span>Works in: {this.props.worksIn}</span>
+            <div className={this.props.classToggle} style={{backgroundImage: this.getPicture()}}>
+                <div className="info_panel" style={this.evalResult()}>
+                    <span>Name: {this.props.data[this.props.answer].name.title} {this.props.data[this.props.answer].name.first} {this.props.data[this.props.answer].name.last}</span>
                 </div>
             </div>
         );

@@ -11,25 +11,27 @@ export class CardContainer extends React.Component {
         super(props);
         this.state = {
             isActive: true,
-            answered: null,
-            failed: false
-        };
-        this.toggleCard = this.toggleCard.bind(this);
-        this.checkResult = this.checkResult.bind(this);
+            answered: false,
+            solved: false
+        }
     }
 
-    toggleCard() {
+    toggleCard = () => {
         let newState = !this.state.isActive;
         this.setState({
             isActive: newState,
-        });
+        })
     }
 
-
-    checkResult(guessed) {
+    /*happens on card default*/
+    submitAResult = (playerResult) => {
+        const solution = this.props.solution
+        let solved = null;
+        console.log(solution, typeof solution, playerResult, typeof playerResult)
+        playerResult === solution ? solved = false : solved = true
         this.setState({
             answered: true,
-            failed: !guessed
+            solved: solved
         })
     }
 
@@ -41,13 +43,13 @@ export class CardContainer extends React.Component {
                     answer={this.props.solution}
                     data = {this.props.data}
                     toggleThis = {this.toggleCard}
+                    onClick = {this.submitAResult}
                 />
                 <CardShown
-                    failed={this.state.failed}
+                    solved={this.state.solved}
                     classToggle={this.state.answered ? "card card_shown" : "card card_hidden"}
                     answer={this.props.solution}
                     data = {this.props.data}
-                    solve = {this.checkResult}
                 />
             </div>
         )
