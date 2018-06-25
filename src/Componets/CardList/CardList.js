@@ -3,7 +3,7 @@ import {CardContainer} from "../CardContainer/CardContainer";
 
 export class CardList extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             isLoaded: false,
             error: null,
@@ -40,7 +40,7 @@ export class CardList extends React.Component {
     }
 
     render(){
-        const { error, isLoaded } = this.state
+        const { error, isLoaded } = this.state;
         if (error) {
             return <div className="error_api">Fehler: {error.message}</div>
         } else if (!isLoaded) {

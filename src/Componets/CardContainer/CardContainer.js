@@ -12,6 +12,7 @@ export class CardContainer extends React.Component {
         this.state = {
             isActive: true,
             answered: false,
+            userAnswer: null,
             solved: false
         }
     }
@@ -21,19 +22,21 @@ export class CardContainer extends React.Component {
         this.setState({
             isActive: newState,
         })
-    }
+    };
 
     /*happens on card default*/
-    submitAResult = (playerResult) => {
-        const solution = this.props.solution
-        let solved = null;
-        console.log(solution, typeof solution, playerResult, typeof playerResult)
-        playerResult === solution ? solved = false : solved = true
+    submitAResult = (playerResult, resultText) => {
+        const solution = this.props.solution;
+        let solved;
+        console.log(solution, typeof solution, playerResult, typeof playerResult);
+        playerResult === solution ? solved = true : solved = false;
+        console.log("solved: ", solved);
         this.setState({
             answered: true,
+            userAnswer: resultText,
             solved: solved
         })
-    }
+    };
 
     render() {
         return (
@@ -47,6 +50,7 @@ export class CardContainer extends React.Component {
                 />
                 <CardShown
                     solved={this.state.solved}
+                    userAnswer={this.state.userAnswer}
                     classToggle={this.state.answered ? "card card_shown" : "card card_hidden"}
                     answer={this.props.solution}
                     data = {this.props.data}
