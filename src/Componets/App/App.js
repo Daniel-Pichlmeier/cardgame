@@ -17,7 +17,7 @@ class App extends Component {
 
     // info coming from CardShown
     setCountAnswered = (answeredCorrectly) => {
-        console.log("propagated to app");
+        console.log(answeredCorrectly);
         if (answeredCorrectly) {
             this.setState({
                 countAnsweredRight: this.state.countAnsweredRight + 1,
@@ -27,6 +27,12 @@ class App extends Component {
                 countAnsweredWrong: this.state.countAnsweredWrong + 1,
             });
         }
+        this.generateCardKey();
+    };
+
+    generateCardKey = () => {
+        console.log("Generating key: ", this.state.countAnsweredRight + this.state.countAnsweredWrong);
+        return this.state.countAnsweredRight + this.state.countAnsweredWrong;
     };
 
     // evaluate when a card is answered
@@ -44,6 +50,7 @@ class App extends Component {
           <div className="AppContainer">
               <Menu className="main_menu"/>
               <CardList
+                  key={this.generateCardKey()}
                   className="card_list"
                   countAnswered={this.setCountAnswered}
               />

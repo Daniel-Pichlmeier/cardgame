@@ -9,10 +9,6 @@ const lose = {
 };
 
 export class CardShown extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     evalResult() {
         if (this.props.solved) {
             return win;
@@ -25,15 +21,6 @@ export class CardShown extends React.Component {
         return "url(" + this.props.data[this.props.answer].picture.large + ")";
     }
 
-    propagateToCardContainer = () => {
-        console.log("Solved?: ",this.props.solved);
-        this.props.propagateToCardContainer(this.props.solved);
-    };
-
-    changeAppstate() {
-
-    }
-
     render() {
         return (
             <div className={this.props.classToggle} style={{backgroundImage: this.getPicture()}}>
@@ -41,7 +28,7 @@ export class CardShown extends React.Component {
                     <span>Name: {this.props.data[this.props.answer].name.title} {this.props.data[this.props.answer].name.first} {this.props.data[this.props.answer].name.last}</span>
                     <span>Your answer: {this.props.userAnswer}</span>
                 </div>
-                <button onClick={this.propagateToCardContainer}>{this.props.solved ? "WOHOO!" : "ALMOST"}</button>
+                <button onClick={this.props.countAnswered}>{this.props.solved ? "WOHOO!" : "ALMOST"}</button>
             </div>
         );
     }
