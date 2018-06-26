@@ -4,6 +4,26 @@ body {
   font-family: sans-serif;
 }
 
+img {
+    width: 100%;
+    height: auto;
+    border-radius: 3px;
+    border: 1px solid black;
+}
+
+button {
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+h1 {
+    margin: 0 0 20px 0;
+    font-weight: normal;
+    text-transform: uppercase;
+    line-height: 1.4;
+    font-size: 190%;
+}
+
 .status_bar,
 .main_menu {
     position: fixed;
@@ -51,6 +71,7 @@ body {
     background:  transparent;
     padding: 8px 16px;
     border-radius: 2px;
+    min-width: 100px;
 }
 
 .main_menu > div button:hover {
@@ -76,9 +97,38 @@ body {
     background: rgba(0, 0, 0, 0.09);
 }
 
-.AppContainer {
-    display:  flex;
-    justify-content:  center;
+.new_game {
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.12);
+    padding: 0;
+    height: 400px;
+    width: 280px;
+    margin: 80px auto;
+    background-size: 100%;
+    flex-flow: column nowrap;
+    border: 10px solid white;
+    justify-content: flex-end;
+    position:  relative;
+}
+
+.new_game button {
+    position: absolute;
+    align-self:  flex-end;
+    display:  block;
+    bottom: 0;
+    right: 0;
+    border: 1px solid #26bb1c;
+    background:  transparent;
+    padding: 8px 16px;
+    border-radius: 2px;
+    min-width: 100px;
+}
+.new_game button:hover {
+    background: rgba(0, 0, 0, 0.09);
+}
+
+.new_game img {
+    min-height: 180px;
+    margin-bottom: 20px;
 }
 
 .card {
@@ -87,9 +137,8 @@ body {
     padding: 0;
     height: 400px;
     width: 280px;
-    margin: 70px auto;
-    background-position: top;
-    background-repeat: no-repeat;
+    margin: 80px auto;
+    background: no-repeat top;
     background-size: 100%;
     flex-flow: column nowrap;
     justify-content: flex-end;
@@ -98,6 +147,10 @@ body {
 
 .card_hidden {
   display: none;
+}
+
+.game_container {
+    padding-top: 80px;
 }
 
 .card.card_shown {

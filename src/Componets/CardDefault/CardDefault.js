@@ -9,7 +9,7 @@ export class CardDefault extends React.Component {
         let result = e.target.dataset.number;
         let resultText = e.target.innerText;
         if (result !== undefined) {
-            result = parseInt(result)
+            result = parseInt(result, 10)
         } else {
             return false
         }

@@ -9,10 +9,6 @@ const lose = {
 };
 
 export class CardShown extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     //helpers
     evalResult() {
         if (this.props.solved) {
