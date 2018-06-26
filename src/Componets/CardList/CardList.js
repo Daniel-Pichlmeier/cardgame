@@ -51,6 +51,7 @@ export class CardList extends React.Component {
                     data={this.state.data}
                     solution={this.state.target}
                     countAnswered={this.props.countAnswered}
+                    countFailed={this.props.countFailed}
                 />
             )
         }

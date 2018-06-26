@@ -9,6 +9,11 @@ const lose = {
 };
 
 export class CardShown extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    //helpers
     evalResult() {
         if (this.props.solved) {
             return win;
@@ -28,7 +33,7 @@ export class CardShown extends React.Component {
                     <span>Name: {this.props.data[this.props.answer].name.title} {this.props.data[this.props.answer].name.first} {this.props.data[this.props.answer].name.last}</span>
                     <span>Your answer: {this.props.userAnswer}</span>
                 </div>
-                <button onClick={this.props.countAnswered}>{this.props.solved ? "WOHOO!" : "ALMOST"}</button>
+                <button onClick={this.props.solved ? this.props.countAnswered : this.props.countFailed}>{this.props.solved ? "WOHOO!" : "ALMOST"}</button>
             </div>
         );
     }

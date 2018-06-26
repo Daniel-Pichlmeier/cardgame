@@ -14,13 +14,71 @@ body {
 }
 
 .status_bar {
-  bottom: 0;
-  box-shadow: 0 -1px 4px rgba(37, 37, 37, 0.12);
+    bottom: 0;
+    -webkit-box-shadow: 0 -1px 4px rgba(37, 37, 37, 0.12);
+    box-shadow: 0 -1px 4px rgba(37, 37, 37, 0.12);
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    color: red;
+    font-weight: bold;
+}
+
+.status_bar > div {
+    margin: 10px;
+}
+
+.status_bar > div span {
+    margin: 0 5px;
+    color:  gray;
 }
 
 .main_menu {
     top: 0;
     box-shadow: 0 1px 4px rgba(37, 37, 37, 0.12);
+}
+
+.main_menu > div {
+    display:  flex;
+    flex-flow:  row nowrap;
+    justify-content:  space-between;
+    align-items:  center;
+    font-size: 115%;
+}
+
+.main_menu > div button {
+    border: 1px solid #26bb1c;
+    background:  transparent;
+    padding: 8px 16px;
+    border-radius: 2px;
+}
+
+.main_menu > div button:hover {
+    background: rgba(0, 0, 0, 0.09);
+}
+
+.main_menu > div {
+    display:  flex;
+    flex-flow:  row nowrap;
+    justify-content:  space-between;
+    align-items:  center;
+    font-size: 115%;
+}
+
+.main_menu > div button {
+    border: 1px solid #26bb1c;
+    background:  transparent;
+    padding: 8px 16px;
+    border-radius: 2px;
+}
+
+.main_menu > div button:hover {
+    background: rgba(0, 0, 0, 0.09);
+}
+
+.AppContainer {
+    display:  flex;
+    justify-content:  center;
 }
 
 .card {

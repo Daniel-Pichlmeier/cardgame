@@ -55,6 +55,7 @@ export class CardContainer extends React.Component {
                     answer={this.props.solution}
                     data = {this.props.data}
                     countAnswered={this.props.countAnswered}
+                    countFailed={this.props.countFailed}
                 />
             </div>
         )

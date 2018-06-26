@@ -16,17 +16,17 @@ class App extends Component {
     }
 
     // info coming from CardShown
-    setCountAnswered = (answeredCorrectly) => {
-        console.log(answeredCorrectly);
-        if (answeredCorrectly) {
+    setCountAnswered = () => {
             this.setState({
                 countAnsweredRight: this.state.countAnsweredRight + 1,
-            })
-        } else {
-            this.setState({
+            });
+        this.generateCardKey();
+    };
+
+    setCountFailed = () => {
+        this.setState({
                 countAnsweredWrong: this.state.countAnsweredWrong + 1,
             });
-        }
         this.generateCardKey();
     };
 
@@ -53,10 +53,11 @@ class App extends Component {
                   key={this.generateCardKey()}
                   className="card_list"
                   countAnswered={this.setCountAnswered}
+                  countFailed={this.setCountFailed}
               />
               <StatusBar
                   countAnsweredRight={this.state.countAnsweredRight}
-                  constAnsweredWrong={this.state.countAnsweredWrong}
+                  countAnsweredWrong={this.state.countAnsweredWrong}
                   biggestStreak={this.state.biggestStreak}
                   className="status_bar"
               />
