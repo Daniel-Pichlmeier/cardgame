@@ -3,6 +3,7 @@ import React, { Component } from 'react'; //unclear as of now
 import './App.css';
 import {Menu} from "../Menu/Menu";
 import {StatusBar} from "../StatusBar/StatusBar";
+import {Login} from "../Login/Login";
 import {Game} from "../Game/Game";
 
 
@@ -10,11 +11,20 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            loggedIn: false,
             countAnsweredRight: 0,
             countAnsweredWrong: -1,
             biggestStreak : -1,
         }
     }
+
+    logIn = (correctLogIn) => {
+        if (correctLogIn) {
+            this.setState({
+                loggedIn: true,
+            });
+        }
+    };
 
     // info coming from CardShown
     setCountAnswered = () => {
@@ -56,6 +66,16 @@ class App extends Component {
     };
 
     render() {
+        if (!this.state.loggedIn) {
+        return (
+            <div className="AppContainer">
+                <Login
+                    onClick={this.logIn}
+                />
+            </div>
+            );
+        }
+        else if (this.state.loggedIn) {
         return (
           <div className="AppContainer">
               <Menu
@@ -81,6 +101,7 @@ class App extends Component {
           </div>
         );
       }
+    }
 }
 
 export default App;

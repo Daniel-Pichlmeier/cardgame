@@ -6,7 +6,7 @@ export class Menu extends React.Component {
             <div className={this.props.className}>
                 <div>
                     <div>Username</div>
-                    <button>Login</button>
+                    <button>Log</button>
                 </div>
             </div>
         )
