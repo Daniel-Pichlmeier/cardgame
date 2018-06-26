@@ -9,6 +9,9 @@ const lose = {
 };
 
 export class CardShown extends React.Component {
+    constructor(props) {
+        super(props);
+    }
 
     evalResult() {
         if (this.props.solved) {
@@ -19,13 +22,17 @@ export class CardShown extends React.Component {
     }
 
     getPicture() {
-        return "url(" + this.props.data[this.props.answer].picture.large + ")"
+        return "url(" + this.props.data[this.props.answer].picture.large + ")";
     }
 
     propagateToCardContainer = () => {
         console.log("Solved?: ",this.props.solved);
-        this.props.propagateToCardContainer(this.props.solved)
+        this.props.propagateToCardContainer(this.props.solved);
     };
+
+    changeAppstate() {
+
+    }
 
     render() {
         return (
@@ -34,7 +41,7 @@ export class CardShown extends React.Component {
                     <span>Name: {this.props.data[this.props.answer].name.title} {this.props.data[this.props.answer].name.first} {this.props.data[this.props.answer].name.last}</span>
                     <span>Your answer: {this.props.userAnswer}</span>
                 </div>
-                <button value={this.props.solved ? "WOHOO!" : "ALMOST"} onClick={this.propagateToCardContainer}/>
+                <button onClick={this.propagateToCardContainer}>{this.props.solved ? "WOHOO!" : "ALMOST"}</button>
             </div>
         );
     }

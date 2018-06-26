@@ -23,22 +23,6 @@ body {
     box-shadow: 0 1px 4px rgba(37, 37, 37, 0.12);
 }
 
-.info_panel {
-    display: flex;
-    flex-flow: column;
-    height: 90px;
-    padding: 10px;
-    color: white;
-}
-
-.card_hidden {
-  display: none;
-}
-
-.card.card_shown {
-  display: flex;
-}
-
 .card {
     -webkit-box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.12);
     box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.12);
@@ -52,6 +36,30 @@ body {
     flex-flow: column nowrap;
     justify-content: flex-end;
     border: 10px solid white;
+}
+
+.card_hidden {
+  display: none;
+}
+
+.card.card_shown {
+  display: flex;
+}
+
+.info_panel {
+    display: flex;
+    flex-flow: column;
+    height: 90px;
+    padding: 10px;
+    color: white;
+}
+
+.card.card_shown button {
+    background-color: #668df9;
+    border: none;
+    padding: 4px;
+    color: #363636;
+    cursor: pointer;
 }
 
 .card > ul {

@@ -1,9 +1,6 @@
 import React from 'react'
 
 export class CardDefault extends React.Component {
-    constructor(props) {
-        super(props)
-    }
     getPicture() {
         return "url(" + this.props.data[this.props.answer].picture.large + ")"
     }

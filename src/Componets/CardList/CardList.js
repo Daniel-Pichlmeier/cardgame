@@ -9,7 +9,11 @@ export class CardList extends React.Component {
             error: null,
             data: null,
             target: null
-        }
+        };
+    }
+
+    componentDidMount() {
+        this.getDataFromApi();
     }
 
     getDataFromApi() {
@@ -33,10 +37,6 @@ export class CardList extends React.Component {
                     }
                 )
         });
-    }
-
-    componentDidMount() {
-        this.getDataFromApi()
     }
 
     propagateAppState = (answeredCorrectly) => {

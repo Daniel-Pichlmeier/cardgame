@@ -17,14 +17,15 @@ class App extends Component {
 
     // info coming from CardShown
     setCountAnswered = (answeredCorrectly) => {
+        console.log("propagated to app");
         if (answeredCorrectly) {
-            this.setState({
-                countAnsweredWrong: this.state.countAnsweredWrong + 1,
-            });
-        } else {
             this.setState({
                 countAnsweredRight: this.state.countAnsweredRight + 1,
             })
+        } else {
+            this.setState({
+                countAnsweredWrong: this.state.countAnsweredWrong + 1,
+            });
         }
     };
 
